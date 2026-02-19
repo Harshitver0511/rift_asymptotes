@@ -1,26 +1,17 @@
-import InputSection from "./components/InputSection";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import "./styles/auth.css";
 
 function App() {
   return (
-    <div className="app">
-      <section className="hero">
-        <div className="hero-content">
-          <h1>
-            autonomous ci/cd <br />
-            healing agent.
-          </h1>
-
-          <p>
-            an autonomous devops agent that detects, fixes,
-            and verifies pipeline failures.
-          </p>
-        </div>
-      </section>
-
-      <section className="form-container">
-        <InputSection />
-      </section>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/" element={<Navigate to="/login" replace />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
